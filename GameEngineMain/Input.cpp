@@ -24,7 +24,12 @@ void Input::Update()
 {
     // 备份键盘状态
     memcpy(m_LastKeyState, m_KeyState, sizeof(m_KeyState));
-    GetKeyboardState(m_KeyState);
+    if (!GetKeyboardState(m_KeyState))
+    {
+        OutputDebugString(L"Input::Update: GetKeyboardState failed\n");
+        // 即使失败，也继续进行，但键盘状态可能无效
+        // 如果你想更严格，可以在这里直接 return，但那样会跳过鼠标更新
+    }
 
     // 使用原始输入累加值作为本帧鼠标移动量
     m_MouseDeltaX = m_RawMouseAccumX;
