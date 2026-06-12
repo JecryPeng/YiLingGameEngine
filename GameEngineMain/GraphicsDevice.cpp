@@ -173,5 +173,5 @@ void GraphicsDevice::Present(bool vsync)
 
 void GraphicsDevice::EnableDepthTest(bool enable)
 {
-    // 可扩展深度测试开关，暂不实现
+    // 可扩展深度测试开关，暂不实现123
 }
